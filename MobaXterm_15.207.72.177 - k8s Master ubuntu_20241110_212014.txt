@@ -1,0 +1,1181 @@
+Authenticating with public key "Imported-Openssh-Key"
+    +----------------------------------------------------------------------+
+    ¦                 • MobaXterm Personal Edition v24.3 •                 ¦
+    ¦               (SSH client, X server and network tools)               ¦
+    ¦                                                                      ¦
+    ¦ ? SSH session to ubuntu@15.207.72.177                                ¦
+    ¦   • Direct SSH      :  ?                                             ¦
+    ¦   • SSH compression :  ?                                             ¦
+    ¦   • SSH-browser     :  ?                                             ¦
+    ¦   • X11-forwarding  :  ?  (remote display is forwarded through SSH)  ¦
+    ¦                                                                      ¦
+    ¦ ? For more info, ctrl+click on help or visit our website.            ¦
+    +----------------------------------------------------------------------+
+
+Welcome to Ubuntu 24.04.1 LTS (GNU/Linux 6.8.0-1016-aws x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/pro
+
+ System information as of Sun Nov 10 06:14:51 UTC 2024
+
+  System load:  0.01               Processes:             140
+  Usage of /:   29.6% of 13.49GB   Users logged in:       0
+  Memory usage: 21%                IPv4 address for enX0: 172.31.39.224
+  Swap usage:   0%
+
+ * Ubuntu Pro delivers the most comprehensive open source security and
+   compliance features.
+
+   https://ubuntu.com/aws/pro
+
+Expanded Security Maintenance for Applications is not enabled.
+
+45 updates can be applied immediately.
+22 of these updates are standard security updates.
+To see these additional updates run: apt list --upgradable
+
+Enable ESM Apps to receive additional future security updates.
+See https://ubuntu.com/esm or run: sudo pro status
+
+
+Last login: Sun Nov 10 03:36:57 2024 from 185.217.70.135
+ubuntu@k8s-master:~$ vi /root/.bashrc
+ubuntu@k8s-master:~$
+ubuntu@k8s-master:~$ sudo su -
+root@k8s-master:/root#
+root@k8s-master:/root# crictl ps
+CONTAINER           IMAGE                                                              CREATED             STATE               NAME                      ATTEMPT             POD ID              POD
+33c7b2f016a42       ead0a4a53df89fd173874b46093b6e62d8c72967bbf606d672c9e8c9b601a4fc   3 hours ago         Running             coredns                   1                   a6eec8e1bec4e       coredns-5dd57
+7c6ab9b64c67d       d781bfd0e519b886e895b2253f23aaa958fd0fddb2e6013cabbec79ee3cf775d   3 hours ago         Running             cilium-agent              1                   bf06358617105       cilium-crk5z
+82f267273748b       b38a7071cbb74b7dac0cc0d2538c3e57493271b35cd77ff3cc80e301a34ce51a   3 hours ago         Running             cilium-envoy              1                   c0cc0dd801c3c       cilium-envoy-
+aafd04d3dfc30       ba6d7f8bc25be40b51dfeb5ddfda697527ba55073620c1c5fa04a5f0ae9e3816   3 hours ago         Running             kube-proxy                1                   f577f20b56a6f       kube-proxy-tb
+5ed72913ad384       9dc6939e7c573673801790fcfad6f994282c216e005578f5836b5fafc6685fc2   3 hours ago         Running             kube-apiserver            1                   96b00ca88151a       kube-apiserve
+126101d847024       9d3465f8477c6b383762d90ec387c9d77da8a402a849265805f86feaa57aeeea   3 hours ago         Running             kube-scheduler            1                   be70396c57740       kube-schedule
+9b3ecdde3c7d2       10541d8af03f40fae257735edd69b6c5dd0084bb9796649409ac7b5660705148   3 hours ago         Running             kube-controller-manager   1                   d70568e330ba5       kube-controll
+dfbabc737b632       2e96e5913fc06e3d26915af3d0f2ca5048cc4b6327e661e80da792cbf8d8d9d4   3 hours ago         Running             etcd                      1                   666fdb32a6d52       etcd-k8s-mast
+root@k8s-master:/root#
+root@k8s-master:/root# systemctl crio status
+Unknown command verb 'crio', did you mean 'cat'?
+root@k8s-master:/root# systemctl status crio
+? crio.service - Container Runtime Interface for OCI (CRI-O)
+     Loaded: loaded (/usr/lib/systemd/system/crio.service; enabled; preset: enabled)
+     Active: active (running) since Sun 2024-11-10 03:34:07 UTC; 2h 51min ago
+       Docs: https://github.com/cri-o/cri-o
+   Main PID: 522 (crio)
+      Tasks: 12
+     Memory: 90.8M (peak: 183.7M)
+        CPU: 27.771s
+     CGroup: /system.slice/crio.service
+             +-522 /usr/bin/crio
+
+Nov 10 06:04:18 k8s-master crio[522]: time="2024-11-10 06:04:18.962462048Z" level=info msg="Checking image status: registry.k8s.io/pause:3.9" id=d7bc03a5-d86f-4cea-be4e-55d3348fb6a3 name=/runtime.v1.ImageSe
+Nov 10 06:04:18 k8s-master crio[522]: time="2024-11-10 06:04:18.962685866Z" level=info msg="Image status: &ImageStatusResponse{Image:&Image{Id:e6f1816883972d4be47bd48879a08919b96afcd344132622e4d444987919323
+Nov 10 06:09:18 k8s-master crio[522]: time="2024-11-10 06:09:18.966482826Z" level=info msg="Checking image status: registry.k8s.io/pause:3.9" id=06f93798-c80e-4fcc-a6c5-d6878189ffa7 name=/runtime.v1.ImageSe
+Nov 10 06:09:18 k8s-master crio[522]: time="2024-11-10 06:09:18.967234693Z" level=info msg="Image status: &ImageStatusResponse{Image:&Image{Id:e6f1816883972d4be47bd48879a08919b96afcd344132622e4d444987919323
+Nov 10 06:14:18 k8s-master crio[522]: time="2024-11-10 06:14:18.969955275Z" level=info msg="Checking image status: registry.k8s.io/pause:3.9" id=b3acf0d5-4635-4d85-9778-0877ca13c9d0 name=/runtime.v1.ImageSe
+Nov 10 06:14:18 k8s-master crio[522]: time="2024-11-10 06:14:18.970187065Z" level=info msg="Image status: &ImageStatusResponse{Image:&Image{Id:e6f1816883972d4be47bd48879a08919b96afcd344132622e4d444987919323
+Nov 10 06:19:18 k8s-master crio[522]: time="2024-11-10 06:19:18.973698593Z" level=info msg="Checking image status: registry.k8s.io/pause:3.9" id=b580a6cc-1e56-4c2f-bc11-700cd3f7d50c name=/runtime.v1.ImageSe
+Nov 10 06:19:18 k8s-master crio[522]: time="2024-11-10 06:19:18.973906043Z" level=info msg="Image status: &ImageStatusResponse{Image:&Image{Id:e6f1816883972d4be47bd48879a08919b96afcd344132622e4d444987919323
+Nov 10 06:24:18 k8s-master crio[522]: time="2024-11-10 06:24:18.977851974Z" level=info msg="Checking image status: registry.k8s.io/pause:3.9" id=20f1f757-686d-4a00-92fd-eab1181a3e79 name=/runtime.v1.ImageSe
+Nov 10 06:24:18 k8s-master crio[522]: time="2024-11-10 06:24:18.978650904Z" level=info msg="Image status: &ImageStatusResponse{Image:&Image{Id:e6f1816883972d4be47bd48879a08919b96afcd344132622e4d444987919323
+lines 1-21/21 (END)
+^C
+root@k8s-master:/root# systemctl status crio
+? crio.service - Container Runtime Interface for OCI (CRI-O)
+     Loaded: loaded (/usr/lib/systemd/system/crio.service; enabled; preset: enabled)
+     Active: active (running) since Sun 2024-11-10 03:34:07 UTC; 2h 53min ago
+       Docs: https://github.com/cri-o/cri-o
+   Main PID: 522 (crio)
+      Tasks: 12
+     Memory: 90.9M (peak: 183.7M)
+        CPU: 27.980s
+     CGroup: /system.slice/crio.service
+             +-522 /usr/bin/crio
+
+Nov 10 06:04:18 k8s-master crio[522]: time="2024-11-10 06:04:18.962462048Z" level=info msg="Checking image status:>
+Nov 10 06:04:18 k8s-master crio[522]: time="2024-11-10 06:04:18.962685866Z" level=info msg="Image status: &ImageSt>
+Nov 10 06:09:18 k8s-master crio[522]: time="2024-11-10 06:09:18.966482826Z" level=info msg="Checking image status:>
+Nov 10 06:09:18 k8s-master crio[522]: time="2024-11-10 06:09:18.967234693Z" level=info msg="Image status: &ImageSt>
+Nov 10 06:14:18 k8s-master crio[522]: time="2024-11-10 06:14:18.969955275Z" level=info msg="Checking image status:>
+Nov 10 06:14:18 k8s-master crio[522]: time="2024-11-10 06:14:18.970187065Z" level=info msg="Image status: &ImageSt>
+Nov 10 06:19:18 k8s-master crio[522]: time="2024-11-10 06:19:18.973698593Z" level=info msg="Checking image status:>
+Nov 10 06:19:18 k8s-master crio[522]: time="2024-11-10 06:19:18.973906043Z" level=info msg="Image status: &ImageSt>
+Nov 10 06:24:18 k8s-master crio[522]: time="2024-11-10 06:24:18.977851974Z" level=info msg="Checking image status:>
+Nov 10 06:24:18 k8s-master crio[522]: time="2024-11-10 06:24:18.978650904Z" level=info msg="Image status: &ImageSt>
+lines 1-21/21 (END)
+^C
+root@k8s-master:/root# free -h
+               total        used        free      shared  buff/cache   available
+Mem:           3.8Gi       1.0Gi       1.2Gi       3.2Mi       1.8Gi       2.8Gi
+Swap:             0B          0B          0B
+root@k8s-master:/root#
+root@k8s-master:/root# kubeadm init
+I1110 06:32:58.828479   13932 version.go:256] remote version is much newer: v1.31.2; falling back to: stable-1.28
+[init] Using Kubernetes version: v1.28.15
+[preflight] Running pre-flight checks
+error execution phase preflight: [preflight] Some fatal errors occurred:
+        [ERROR Port-6443]: Port 6443 is in use
+        [ERROR Port-10259]: Port 10259 is in use
+        [ERROR Port-10257]: Port 10257 is in use
+        [ERROR FileAvailable--etc-kubernetes-manifests-kube-apiserver.yaml]: /etc/kubernetes/manifests/kube-apiserver.yaml already exists
+        [ERROR FileAvailable--etc-kubernetes-manifests-kube-controller-manager.yaml]: /etc/kubernetes/manifests/kube-controller-manager.yaml already exists
+        [ERROR FileAvailable--etc-kubernetes-manifests-kube-scheduler.yaml]: /etc/kubernetes/manifests/kube-scheduler.yaml already exists
+        [ERROR FileAvailable--etc-kubernetes-manifests-etcd.yaml]: /etc/kubernetes/manifests/etcd.yaml already exists
+        [ERROR Port-10250]: Port 10250 is in use
+        [ERROR Port-2379]: Port 2379 is in use
+        [ERROR Port-2380]: Port 2380 is in use
+        [ERROR DirAvailable--var-lib-etcd]: /var/lib/etcd is not empty
+[preflight] If you know what you are doing, you can make a check non-fatal with `--ignore-preflight-errors=...`
+To see the stack trace of this error execute with --v=5 or higher
+root@k8s-master:/root#
+root@k8s-master:/root#
+root@k8s-master:/root# kubeadm init --v=5
+I1110 06:33:51.237901   13961 initconfiguration.go:117] detected and using CRI socket: unix:///var/run/crio/crio.sock
+I1110 06:33:51.238166   13961 interface.go:432] Looking for default routes with IPv4 addresses
+I1110 06:33:51.238186   13961 interface.go:437] Default route transits interface "enX0"
+I1110 06:33:51.238374   13961 interface.go:209] Interface enX0 is up
+I1110 06:33:51.238435   13961 interface.go:257] Interface "enX0" has 2 addresses :[172.31.39.224/20 fe80::58:88ff:fe77:4a15/64].
+I1110 06:33:51.238460   13961 interface.go:224] Checking addr  172.31.39.224/20.
+I1110 06:33:51.238478   13961 interface.go:231] IP found 172.31.39.224
+I1110 06:33:51.238505   13961 interface.go:263] Found valid IPv4 address 172.31.39.224 for interface "enX0".
+I1110 06:33:51.238520   13961 interface.go:443] Found active IP 172.31.39.224
+I1110 06:33:51.239975   13961 kubelet.go:196] the value of KubeletConfiguration.cgroupDriver is empty; setting it to "systemd"
+I1110 06:33:51.246311   13961 version.go:187] fetching Kubernetes version from URL: https://dl.k8s.io/release/stable-1.txt
+I1110 06:33:51.564284   13961 version.go:256] remote version is much newer: v1.31.2; falling back to: stable-1.28
+I1110 06:33:51.564324   13961 version.go:187] fetching Kubernetes version from URL: https://dl.k8s.io/release/stable-1.28.txt
+I1110 06:33:52.131351   13961 certs.go:519] validating certificate period for CA certificate
+I1110 06:33:52.131437   13961 certs.go:519] validating certificate period for front-proxy CA certificate
+[init] Using Kubernetes version: v1.28.15
+[preflight] Running pre-flight checks
+I1110 06:33:52.131802   13961 checks.go:563] validating Kubernetes and kubeadm version
+I1110 06:33:52.131850   13961 checks.go:168] validating if the firewall is enabled and active
+I1110 06:33:52.145616   13961 checks.go:203] validating availability of port 6443
+I1110 06:33:52.145980   13961 checks.go:203] validating availability of port 10259
+I1110 06:33:52.146025   13961 checks.go:203] validating availability of port 10257
+I1110 06:33:52.146084   13961 checks.go:280] validating the existence of file /etc/kubernetes/manifests/kube-apiserver.yaml
+I1110 06:33:52.146124   13961 checks.go:280] validating the existence of file /etc/kubernetes/manifests/kube-controller-manager.yaml
+I1110 06:33:52.146148   13961 checks.go:280] validating the existence of file /etc/kubernetes/manifests/kube-scheduler.yaml
+I1110 06:33:52.146175   13961 checks.go:280] validating the existence of file /etc/kubernetes/manifests/etcd.yaml
+I1110 06:33:52.146199   13961 checks.go:430] validating if the connectivity type is via proxy or direct
+I1110 06:33:52.146221   13961 checks.go:469] validating http connectivity to first IP address in the CIDR
+I1110 06:33:52.146239   13961 checks.go:469] validating http connectivity to first IP address in the CIDR
+I1110 06:33:52.146246   13961 checks.go:104] validating the container runtime
+I1110 06:33:52.171413   13961 checks.go:639] validating whether swap is enabled or not
+I1110 06:33:52.171510   13961 checks.go:370] validating the presence of executable crictl
+I1110 06:33:52.171546   13961 checks.go:370] validating the presence of executable conntrack
+I1110 06:33:52.171573   13961 checks.go:370] validating the presence of executable ip
+I1110 06:33:52.171599   13961 checks.go:370] validating the presence of executable iptables
+I1110 06:33:52.171623   13961 checks.go:370] validating the presence of executable mount
+I1110 06:33:52.171642   13961 checks.go:370] validating the presence of executable nsenter
+I1110 06:33:52.171666   13961 checks.go:370] validating the presence of executable ethtool
+I1110 06:33:52.171697   13961 checks.go:370] validating the presence of executable tc
+I1110 06:33:52.171715   13961 checks.go:370] validating the presence of executable touch
+I1110 06:33:52.171749   13961 checks.go:516] running all checks
+I1110 06:33:52.185524   13961 checks.go:401] checking whether the given node name is valid and reachable using net.LookupHost
+I1110 06:33:52.195021   13961 checks.go:605] validating kubelet version
+I1110 06:33:52.255673   13961 checks.go:130] validating if the "kubelet" service is enabled and active
+I1110 06:33:52.271283   13961 checks.go:203] validating availability of port 10250
+I1110 06:33:52.271381   13961 checks.go:329] validating the contents of file /proc/sys/net/bridge/bridge-nf-call-iptables
+I1110 06:33:52.271432   13961 checks.go:329] validating the contents of file /proc/sys/net/ipv4/ip_forward
+I1110 06:33:52.271457   13961 checks.go:203] validating availability of port 2379
+I1110 06:33:52.271495   13961 checks.go:203] validating availability of port 2380
+I1110 06:33:52.271532   13961 checks.go:243] validating the existence and emptiness of directory /var/lib/etcd
+[preflight] Some fatal errors occurred:
+        [ERROR Port-6443]: Port 6443 is in use
+        [ERROR Port-10259]: Port 10259 is in use
+        [ERROR Port-10257]: Port 10257 is in use
+        [ERROR FileAvailable--etc-kubernetes-manifests-kube-apiserver.yaml]: /etc/kubernetes/manifests/kube-apiserver.yaml already exists
+        [ERROR FileAvailable--etc-kubernetes-manifests-kube-controller-manager.yaml]: /etc/kubernetes/manifests/kube-controller-manager.yaml already exists
+        [ERROR FileAvailable--etc-kubernetes-manifests-kube-scheduler.yaml]: /etc/kubernetes/manifests/kube-scheduler.yaml already exists
+        [ERROR FileAvailable--etc-kubernetes-manifests-etcd.yaml]: /etc/kubernetes/manifests/etcd.yaml already exists
+        [ERROR Port-10250]: Port 10250 is in use
+        [ERROR Port-2379]: Port 2379 is in use
+        [ERROR Port-2380]: Port 2380 is in use
+        [ERROR DirAvailable--var-lib-etcd]: /var/lib/etcd is not empty
+[preflight] If you know what you are doing, you can make a check non-fatal with `--ignore-preflight-errors=...`
+error execution phase preflight
+k8s.io/kubernetes/cmd/kubeadm/app/cmd/phases/workflow.(*Runner).Run.func1
+        k8s.io/kubernetes/cmd/kubeadm/app/cmd/phases/workflow/runner.go:260
+k8s.io/kubernetes/cmd/kubeadm/app/cmd/phases/workflow.(*Runner).visitAll
+        k8s.io/kubernetes/cmd/kubeadm/app/cmd/phases/workflow/runner.go:446
+k8s.io/kubernetes/cmd/kubeadm/app/cmd/phases/workflow.(*Runner).Run
+        k8s.io/kubernetes/cmd/kubeadm/app/cmd/phases/workflow/runner.go:232
+k8s.io/kubernetes/cmd/kubeadm/app/cmd.newCmdInit.func1
+        k8s.io/kubernetes/cmd/kubeadm/app/cmd/init.go:111
+github.com/spf13/cobra.(*Command).execute
+        github.com/spf13/cobra@v1.7.0/command.go:940
+github.com/spf13/cobra.(*Command).ExecuteC
+        github.com/spf13/cobra@v1.7.0/command.go:1068
+github.com/spf13/cobra.(*Command).Execute
+        github.com/spf13/cobra@v1.7.0/command.go:992
+k8s.io/kubernetes/cmd/kubeadm/app.Run
+        k8s.io/kubernetes/cmd/kubeadm/app/kubeadm.go:50
+main.main
+        k8s.io/kubernetes/cmd/kubeadm/kubeadm.go:25
+runtime.main
+        runtime/proc.go:271
+runtime.goexit
+        runtime/asm_amd64.s:1695
+root@k8s-master:/root#
+root@k8s-master:/root#
+root@k8s-master:/root# echo $HOME
+/root
+root@k8s-master:/root# ls -lart
+total 49468
+-rw-r--r--  1 root root      161 Apr 22  2024 .profile
+drwx------  2 root root     4096 Nov  9 13:36 .ssh
+drwx------  3 root root     4096 Nov  9 13:36 snap
+drwxr-xr-x  3 root root     4096 Nov  9 14:22 .kube
+-rw-r--r--  1 root root      529 Nov  9 14:24 cilium.sh
+-rw-r--r--  1 root root 50600430 Nov  9 14:27 cilium-linux-amd64.tar.gz
+-rw-r--r--  1 root root       92 Nov  9 14:27 cilium-linux-amd64.tar.gz.sha256sum
+drwxr-xr-x 22 root root     4096 Nov 10 03:34 ..
+-rw-r--r--  1 root root     3257 Nov 10 04:33 .bashrc
+-rw-------  1 root root     7206 Nov 10 04:33 .viminfo
+-rw-------  1 root root     1705 Nov 10 04:47 .bash_history
+-rw-------  1 root root       20 Nov 10 06:28 .lesshst
+drwx------  5 root root     4096 Nov 10 06:28 .
+root@k8s-master:/root#
+root@k8s-master:/root# cd /
+root@k8s-master:/# ls -lart
+total 84
+drwxr-xr-x   2 root root  4096 Feb 26  2024 bin.usr-is-merged
+drwxr-xr-x   2 root root  4096 Mar 31  2024 sbin.usr-is-merged
+drwxr-xr-x   2 root root  4096 Apr  8  2024 lib.usr-is-merged
+lrwxrwxrwx   1 root root     8 Apr 22  2024 sbin -> usr/sbin
+lrwxrwxrwx   1 root root     9 Apr 22  2024 lib64 -> usr/lib64
+lrwxrwxrwx   1 root root     7 Apr 22  2024 lib -> usr/lib
+lrwxrwxrwx   1 root root     7 Apr 22  2024 bin -> usr/bin
+drwxr-xr-x   2 root root  4096 Sep 27 08:36 srv
+drwxr-xr-x   2 root root  4096 Sep 27 08:36 mnt
+drwxr-xr-x   2 root root  4096 Sep 27 08:36 media
+drwxr-xr-x  12 root root  4096 Sep 27 08:36 usr
+drwx------   2 root root 16384 Sep 27 08:38 lost+found
+drwxr-xr-x   6 root root  4096 Sep 27 08:40 snap
+drwxr-xr-x  13 root root  4096 Nov  9 13:36 var
+drwxr-xr-x   3 root root  4096 Nov  9 13:36 home
+drwxr-xr-x   3 root root  4096 Nov  9 13:36 opt
+dr-xr-xr-x 201 root root     0 Nov 10 03:33 proc
+dr-xr-xr-x  13 root root     0 Nov 10 03:33 sys
+drwxr-xr-x  22 root root  4096 Nov 10 03:34 ..
+drwxr-xr-x  22 root root  4096 Nov 10 03:34 .
+drwxr-xr-x  16 root root  3240 Nov 10 03:34 dev
+drwxrwxrwt  12 root root  4096 Nov 10 06:24 tmp
+drwxr-xr-x   5 root root  4096 Nov 10 06:24 boot
+drwxr-xr-x 112 root root  4096 Nov 10 06:24 etc
+drwxr-xr-x  38 root root  1180 Nov 10 06:24 run
+drwx------   5 root root  4096 Nov 10 06:28 root
+root@k8s-master:/# cd /etc/kubernetes
+root@k8s-master:/etc/kubernetes# ls -lart
+total 44
+drwxr-xr-x   3 root root 4096 Nov  9 14:14 pki
+-rw-------   1 root root 5645 Nov  9 14:14 admin.conf
+-rw-------   1 root root 5681 Nov  9 14:14 controller-manager.conf
+-rw-------   1 root root 5625 Nov  9 14:14 scheduler.conf
+drwxrwxr-x   4 root root 4096 Nov  9 14:14 .
+drwxrwxr-x   2 root root 4096 Nov  9 14:14 manifests
+-rw-------   1 root root 1985 Nov  9 14:14 kubelet.conf
+drwxr-xr-x 112 root root 4096 Nov 10 06:24 ..
+root@k8s-master:/etc/kubernetes# vi admin.conf
+root@k8s-master:/etc/kubernetes#
+root@k8s-master:/etc/kubernetes# cd pki
+root@k8s-master:/etc/kubernetes/pki# ls -lart
+total 68
+-rw------- 1 root root 1675 Nov  9 14:14 ca.key
+-rw-r--r-- 1 root root 1107 Nov  9 14:14 ca.crt
+-rw------- 1 root root 1675 Nov  9 14:14 apiserver.key
+-rw-r--r-- 1 root root 1285 Nov  9 14:14 apiserver.crt
+-rw------- 1 root root 1675 Nov  9 14:14 apiserver-kubelet-client.key
+-rw-r--r-- 1 root root 1164 Nov  9 14:14 apiserver-kubelet-client.crt
+-rw------- 1 root root 1679 Nov  9 14:14 front-proxy-ca.key
+-rw-r--r-- 1 root root 1123 Nov  9 14:14 front-proxy-ca.crt
+-rw------- 1 root root 1679 Nov  9 14:14 front-proxy-client.key
+-rw-r--r-- 1 root root 1119 Nov  9 14:14 front-proxy-client.crt
+drwxr-xr-x 2 root root 4096 Nov  9 14:14 etcd
+-rw------- 1 root root 1679 Nov  9 14:14 apiserver-etcd-client.key
+-rw-r--r-- 1 root root 1155 Nov  9 14:14 apiserver-etcd-client.crt
+-rw------- 1 root root  451 Nov  9 14:14 sa.pub
+-rw------- 1 root root 1675 Nov  9 14:14 sa.key
+drwxr-xr-x 3 root root 4096 Nov  9 14:14 .
+drwxrwxr-x 4 root root 4096 Nov 10 06:43 ..
+root@k8s-master:/etc/kubernetes/pki# vi admin.conf
+root@k8s-master:/etc/kubernetes/pki# cd ..
+root@k8s-master:/etc/kubernetes# vi admin.conf
+root@k8s-master:/etc/kubernetes#
+root@k8s-master:/etc/kubernetes# vi controller-manager.conf
+root@k8s-master:/etc/kubernetes#
+root@k8s-master:/etc/kubernetes# vi scheduler.conf
+root@k8s-master:/etc/kubernetes#
+root@k8s-master:/etc/kubernetes# vi kubelet.conf
+root@k8s-master:/etc/kubernetes#
+root@k8s-master:/etc/kubernetes# cd manifests/
+root@k8s-master:/etc/kubernetes/manifests# ls -lart
+total 24
+-rw-r--r-- 1 root root    0 Oct 22 21:28 .kubelet-keep
+-rw------- 1 root root 2408 Nov  9 14:14 etcd.yaml
+-rw------- 1 root root 4038 Nov  9 14:14 kube-apiserver.yaml
+-rw------- 1 root root 3430 Nov  9 14:14 kube-controller-manager.yaml
+-rw------- 1 root root 1464 Nov  9 14:14 kube-scheduler.yaml
+drwxrwxr-x 2 root root 4096 Nov  9 14:14 .
+drwxrwxr-x 4 root root 4096 Nov 10 06:47 ..
+root@k8s-master:/etc/kubernetes/manifests# vi etcd.yaml
+root@k8s-master:/etc/kubernetes/manifests#
+root@k8s-master:/etc/kubernetes/manifests# vi kube-apiserver.yaml
+root@k8s-master:/etc/kubernetes/manifests#
+root@k8s-master:/etc/kubernetes/manifests# vi kube-controller-manager.yaml
+root@k8s-master:/etc/kubernetes/manifests#
+root@k8s-master:/etc/kubernetes/manifests# vi kube-scheduler.yaml
+root@k8s-master:/etc/kubernetes/manifests#
+root@k8s-master:/etc/kubernetes/manifests# vi etcd.yaml
+root@k8s-master:/etc/kubernetes/manifests#
+root@k8s-master:/etc/kubernetes/manifests# systemctl start crio
+root@k8s-master:/etc/kubernetes/manifests#
+root@k8s-master:/etc/kubernetes/manifests# systemctl status crio
+? crio.service - Container Runtime Interface for OCI (CRI-O)
+     Loaded: loaded (/usr/lib/systemd/system/crio.service; enabled; preset: enabled)
+     Active: active (running) since Sun 2024-11-10 03:34:07 UTC; 6h ago
+       Docs: https://github.com/cri-o/cri-o
+   Main PID: 522 (crio)
+      Tasks: 12
+     Memory: 91.2M (peak: 183.7M)
+        CPU: 1min 1.356s
+     CGroup: /system.slice/crio.service
+             +-522 /usr/bin/crio
+
+Nov 10 09:59:19 k8s-master crio[522]: time="2024-11-10 09:59:19.138306874Z" level=info msg="Checking image status: registry.k8s.io/pause:3.9" id=6e252c51-8087-45d6-8b86-a612d42ef9ba name=/runtime.v1.ImageS>
+Nov 10 09:59:19 k8s-master crio[522]: time="2024-11-10 09:59:19.138521009Z" level=info msg="Image status: &ImageStatusResponse{Image:&Image{Id:e6f1816883972d4be47bd48879a08919b96afcd344132622e4d44498791932>
+Nov 10 10:04:19 k8s-master crio[522]: time="2024-11-10 10:04:19.142343972Z" level=info msg="Checking image status: registry.k8s.io/pause:3.9" id=31623299-a9c5-4d49-83a1-e642dba53b85 name=/runtime.v1.ImageS>
+Nov 10 10:04:19 k8s-master crio[522]: time="2024-11-10 10:04:19.142563056Z" level=info msg="Image status: &ImageStatusResponse{Image:&Image{Id:e6f1816883972d4be47bd48879a08919b96afcd344132622e4d44498791932>
+Nov 10 10:09:19 k8s-master crio[522]: time="2024-11-10 10:09:19.146720234Z" level=info msg="Checking image status: registry.k8s.io/pause:3.9" id=1303c6dd-0f97-4610-ad7f-297a5bb651a4 name=/runtime.v1.ImageS>
+Nov 10 10:09:19 k8s-master crio[522]: time="2024-11-10 10:09:19.146959944Z" level=info msg="Image status: &ImageStatusResponse{Image:&Image{Id:e6f1816883972d4be47bd48879a08919b96afcd344132622e4d44498791932>
+Nov 10 10:14:19 k8s-master crio[522]: time="2024-11-10 10:14:19.149890158Z" level=info msg="Checking image status: registry.k8s.io/pause:3.9" id=6465a8fd-a590-4460-9a6e-bfc6f3445266 name=/runtime.v1.ImageS>
+Nov 10 10:14:19 k8s-master crio[522]: time="2024-11-10 10:14:19.150646646Z" level=info msg="Image status: &ImageStatusResponse{Image:&Image{Id:e6f1816883972d4be47bd48879a08919b96afcd344132622e4d44498791932>
+Nov 10 10:19:19 k8s-master crio[522]: time="2024-11-10 10:19:19.153953930Z" level=info msg="Checking image status: registry.k8s.io/pause:3.9" id=f0b9330d-8779-4f32-9571-b378a673eb50 name=/runtime.v1.ImageS>
+Nov 10 10:19:19 k8s-master crio[522]: time="2024-11-10 10:19:19.154269951Z" level=info msg="Image status: &ImageStatusResponse{Image:&Image{Id:e6f1816883972d4be47bd48879a08919b96afcd344132622e4d44498791932>
+root@k8s-master:/etc/kubernetes/manifests#
+root@k8s-master:/etc/kubernetes/manifests# systemctl stop crio
+root@k8s-master:/etc/kubernetes/manifests#
+root@k8s-master:/etc/kubernetes/manifests# systemctl status crio
+? crio.service - Container Runtime Interface for OCI (CRI-O)
+     Loaded: loaded (/usr/lib/systemd/system/crio.service; enabled; preset: enabled)
+     Active: inactive (dead) since Sun 2024-11-10 10:22:10 UTC; 3s ago
+   Duration: 6h 48min 3.226s
+       Docs: https://github.com/cri-o/cri-o
+    Process: 522 ExecStart=/usr/bin/crio $CRIO_CONFIG_OPTIONS $CRIO_RUNTIME_OPTIONS $CRIO_STORAGE_OPTIONS $CRIO_NETWORK_OPTIONS $CRIO_METRICS_OPTIONS (code=exited, status=0/SUCCESS)
+   Main PID: 522 (code=exited, status=0/SUCCESS)
+        CPU: 1min 1.419s
+
+Nov 10 10:09:19 k8s-master crio[522]: time="2024-11-10 10:09:19.146720234Z" level=info msg="Checking image status: registry.k8s.io/pause:3.9" id=1303c6dd-0f97-4610-ad7f-297a5bb651a4 name=/runtime.v1.ImageS>
+Nov 10 10:09:19 k8s-master crio[522]: time="2024-11-10 10:09:19.146959944Z" level=info msg="Image status: &ImageStatusResponse{Image:&Image{Id:e6f1816883972d4be47bd48879a08919b96afcd344132622e4d44498791932>
+Nov 10 10:14:19 k8s-master crio[522]: time="2024-11-10 10:14:19.149890158Z" level=info msg="Checking image status: registry.k8s.io/pause:3.9" id=6465a8fd-a590-4460-9a6e-bfc6f3445266 name=/runtime.v1.ImageS>
+Nov 10 10:14:19 k8s-master crio[522]: time="2024-11-10 10:14:19.150646646Z" level=info msg="Image status: &ImageStatusResponse{Image:&Image{Id:e6f1816883972d4be47bd48879a08919b96afcd344132622e4d44498791932>
+Nov 10 10:19:19 k8s-master crio[522]: time="2024-11-10 10:19:19.153953930Z" level=info msg="Checking image status: registry.k8s.io/pause:3.9" id=f0b9330d-8779-4f32-9571-b378a673eb50 name=/runtime.v1.ImageS>
+Nov 10 10:19:19 k8s-master crio[522]: time="2024-11-10 10:19:19.154269951Z" level=info msg="Image status: &ImageStatusResponse{Image:&Image{Id:e6f1816883972d4be47bd48879a08919b96afcd344132622e4d44498791932>
+Nov 10 10:22:10 k8s-master systemd[1]: Stopping crio.service - Container Runtime Interface for OCI (CRI-O)...
+Nov 10 10:22:10 k8s-master systemd[1]: crio.service: Deactivated successfully.
+Nov 10 10:22:10 k8s-master systemd[1]: Stopped crio.service - Container Runtime Interface for OCI (CRI-O).
+Nov 10 10:22:10 k8s-master systemd[1]: crio.service: Consumed 1min 1.419s CPU time, 183.7M memory peak, 0B memory swap peak.
+root@k8s-master:/etc/kubernetes/manifests#
+root@k8s-master:/etc/kubernetes/manifests#
+root@k8s-master:/etc/kubernetes/manifests# systemctl start crio
+root@k8s-master:/etc/kubernetes/manifests#
+root@k8s-master:/etc/kubernetes/manifests# systemctl status crio
+? crio.service - Container Runtime Interface for OCI (CRI-O)
+     Loaded: loaded (/usr/lib/systemd/system/crio.service; enabled; preset: enabled)
+     Active: active (running) since Sun 2024-11-10 10:22:30 UTC; 4s ago
+       Docs: https://github.com/cri-o/cri-o
+   Main PID: 15765 (crio)
+      Tasks: 9
+     Memory: 12.5M (peak: 24.2M)
+        CPU: 271ms
+     CGroup: /system.slice/crio.service
+             +-15765 /usr/bin/crio
+
+Nov 10 10:22:30 k8s-master crio[15765]: time="2024-11-10 10:22:30.597020086Z" level=info msg="Updated default CNI network name to cilium"
+Nov 10 10:22:30 k8s-master crio[15765]: time="2024-11-10 10:22:30.598382771Z" level=info msg="Attempting to restore irqbalance config from /etc/sysconfig/orig_irq_banned_cpus"
+Nov 10 10:22:30 k8s-master crio[15765]: time="2024-11-10 10:22:30.598483319Z" level=info msg="Restore irqbalance config: failed to get current CPU ban list, ignoring"
+Nov 10 10:22:30 k8s-master crio[15765]: time="2024-11-10 10:22:30.736671328Z" level=info msg="Got pod network &{Name:coredns-5dd5756b68-vz5tr Namespace:kube-system ID:a6eec8e1bec4ed495e16d98f6136d1ef58c1e3>
+Nov 10 10:22:30 k8s-master crio[15765]: time="2024-11-10 10:22:30.736903551Z" level=info msg="Checking pod kube-system_coredns-5dd5756b68-vz5tr for CNI network cilium (type=cilium-cni)"
+Nov 10 10:22:30 k8s-master crio[15765]: time="2024-11-10 10:22:30.737620942Z" level=info msg="Registered SIGHUP reload watcher"
+Nov 10 10:22:30 k8s-master crio[15765]: time="2024-11-10 10:22:30.737643425Z" level=info msg="Starting seccomp notifier watcher"
+Nov 10 10:22:30 k8s-master crio[15765]: time="2024-11-10 10:22:30.737714612Z" level=info msg="Create NRI interface"
+Nov 10 10:22:30 k8s-master crio[15765]: time="2024-11-10 10:22:30.737728551Z" level=info msg="NRI interface is disabled in the configuration."
+Nov 10 10:22:30 k8s-master systemd[1]: Started crio.service - Container Runtime Interface for OCI (CRI-O).
+root@k8s-master:/etc/kubernetes/manifests#
+root@k8s-master:/etc/kubernetes/manifests# systemctl status crio
+? crio.service - Container Runtime Interface for OCI (CRI-O)
+     Loaded: loaded (/usr/lib/systemd/system/crio.service; enabled; preset: enabled)
+     Active: active (running) since Sun 2024-11-10 10:22:30 UTC; 26s ago
+       Docs: https://github.com/cri-o/cri-o
+   Main PID: 15765 (crio)
+      Tasks: 9
+     Memory: 14.1M (peak: 24.2M)
+        CPU: 337ms
+     CGroup: /system.slice/crio.service
+             +-15765 /usr/bin/crio
+
+Nov 10 10:22:30 k8s-master crio[15765]: time="2024-11-10 10:22:30.597020086Z" level=info msg="Updated default CNI network name to cilium"
+Nov 10 10:22:30 k8s-master crio[15765]: time="2024-11-10 10:22:30.598382771Z" level=info msg="Attempting to restore irqbalance config from /etc/sysconfig/orig_irq_banned_cpus"
+Nov 10 10:22:30 k8s-master crio[15765]: time="2024-11-10 10:22:30.598483319Z" level=info msg="Restore irqbalance config: failed to get current CPU ban list, ignoring"
+Nov 10 10:22:30 k8s-master crio[15765]: time="2024-11-10 10:22:30.736671328Z" level=info msg="Got pod network &{Name:coredns-5dd5756b68-vz5tr Namespace:kube-system ID:a6eec8e1bec4ed495e16d98f6136d1ef58c1e3>
+Nov 10 10:22:30 k8s-master crio[15765]: time="2024-11-10 10:22:30.736903551Z" level=info msg="Checking pod kube-system_coredns-5dd5756b68-vz5tr for CNI network cilium (type=cilium-cni)"
+Nov 10 10:22:30 k8s-master crio[15765]: time="2024-11-10 10:22:30.737620942Z" level=info msg="Registered SIGHUP reload watcher"
+Nov 10 10:22:30 k8s-master crio[15765]: time="2024-11-10 10:22:30.737643425Z" level=info msg="Starting seccomp notifier watcher"
+Nov 10 10:22:30 k8s-master crio[15765]: time="2024-11-10 10:22:30.737714612Z" level=info msg="Create NRI interface"
+Nov 10 10:22:30 k8s-master crio[15765]: time="2024-11-10 10:22:30.737728551Z" level=info msg="NRI interface is disabled in the configuration."
+Nov 10 10:22:30 k8s-master systemd[1]: Started crio.service - Container Runtime Interface for OCI (CRI-O).
+root@k8s-master:/etc/kubernetes/manifests#
+root@k8s-master:/etc/kubernetes/manifests#
+root@k8s-master:/etc/kubernetes/manifests# kubeadm init
+I1110 10:25:07.582305   15857 version.go:256] remote version is much newer: v1.31.2; falling back to: stable-1.28
+[init] Using Kubernetes version: v1.28.15
+[preflight] Running pre-flight checks
+error execution phase preflight: [preflight] Some fatal errors occurred:
+        [ERROR Port-6443]: Port 6443 is in use
+        [ERROR Port-10259]: Port 10259 is in use
+        [ERROR Port-10257]: Port 10257 is in use
+        [ERROR FileAvailable--etc-kubernetes-manifests-kube-apiserver.yaml]: /etc/kubernetes/manifests/kube-apiserver.yaml already exists
+        [ERROR FileAvailable--etc-kubernetes-manifests-kube-controller-manager.yaml]: /etc/kubernetes/manifests/kube-controller-manager.yaml already exists
+        [ERROR FileAvailable--etc-kubernetes-manifests-kube-scheduler.yaml]: /etc/kubernetes/manifests/kube-scheduler.yaml already exists
+        [ERROR FileAvailable--etc-kubernetes-manifests-etcd.yaml]: /etc/kubernetes/manifests/etcd.yaml already exists
+        [ERROR Port-10250]: Port 10250 is in use
+        [ERROR Port-2379]: Port 2379 is in use
+        [ERROR Port-2380]: Port 2380 is in use
+        [ERROR DirAvailable--var-lib-etcd]: /var/lib/etcd is not empty
+[preflight] If you know what you are doing, you can make a check non-fatal with `--ignore-preflight-errors=...`
+To see the stack trace of this error execute with --v=5 or higher
+root@k8s-master:/etc/kubernetes/manifests#
+root@k8s-master:/etc/kubernetes/manifests# kubectl get nodes
+NAME              STATUS   ROLES           AGE   VERSION
+k8s-master        Ready    control-plane   20h   v1.28.15
+k8s-workernode1   Ready    <none>          20h   v1.28.15
+k8s-workernode2   Ready    <none>          20h   v1.28.15
+root@k8s-master:/etc/kubernetes/manifests# cd /
+root@k8s-master:/# ls -lrt
+total 76
+drwxr-xr-x   2 root root  4096 Feb 26  2024 bin.usr-is-merged
+drwxr-xr-x   2 root root  4096 Mar 31  2024 sbin.usr-is-merged
+drwxr-xr-x   2 root root  4096 Apr  8  2024 lib.usr-is-merged
+lrwxrwxrwx   1 root root     8 Apr 22  2024 sbin -> usr/sbin
+lrwxrwxrwx   1 root root     9 Apr 22  2024 lib64 -> usr/lib64
+lrwxrwxrwx   1 root root     7 Apr 22  2024 lib -> usr/lib
+lrwxrwxrwx   1 root root     7 Apr 22  2024 bin -> usr/bin
+drwxr-xr-x   2 root root  4096 Sep 27 08:36 srv
+drwxr-xr-x   2 root root  4096 Sep 27 08:36 mnt
+drwxr-xr-x   2 root root  4096 Sep 27 08:36 media
+drwxr-xr-x  12 root root  4096 Sep 27 08:36 usr
+drwx------   2 root root 16384 Sep 27 08:38 lost+found
+drwxr-xr-x   6 root root  4096 Sep 27 08:40 snap
+drwxr-xr-x  13 root root  4096 Nov  9 13:36 var
+drwxr-xr-x   3 root root  4096 Nov  9 13:36 home
+drwxr-xr-x   3 root root  4096 Nov  9 13:36 opt
+dr-xr-xr-x 201 root root     0 Nov 10 03:33 proc
+drwxr-xr-x  16 root root  3240 Nov 10 03:34 dev
+drwxr-xr-x   5 root root  4096 Nov 10 06:24 boot
+drwxr-xr-x 112 root root  4096 Nov 10 06:24 etc
+drwxr-xr-x  38 root root  1180 Nov 10 06:24 run
+dr-xr-xr-x  13 root root     0 Nov 10 06:41 sys
+drwx------   5 root root  4096 Nov 10 10:23 root
+drwxrwxrwt  12 root root  4096 Nov 10 10:37 tmp
+root@k8s-master:/# find / -type f -name cilium.sh
+/root/cilium.sh
+root@k8s-master:/#
+root@k8s-master:/# cd /root
+root@k8s-master:/root# ls -lrt
+total 49428
+drwx------ 3 root root     4096 Nov  9 13:36 snap
+-rw-r--r-- 1 root root      529 Nov  9 14:24 cilium.sh
+-rw-r--r-- 1 root root 50600430 Nov  9 14:27 cilium-linux-amd64.tar.gz
+-rw-r--r-- 1 root root       92 Nov  9 14:27 cilium-linux-amd64.tar.gz.sha256sum
+root@k8s-master:/root# cd /usr/local/bin
+root@k8s-master:/usr/local/bin#
+root@k8s-master:/usr/local/bin# ls -lart
+total 121748
+drwxr-xr-x 10 root root      4096 Sep 27 08:36 ..
+-rwxr-xr-x  1 1001  118 124657816 Nov  6 16:57 cilium
+drwxr-xr-x  2 root root      4096 Nov  9 14:27 .
+root@k8s-master:/usr/local/bin# vi cilium
+root@k8s-master:/usr/local/bin#
+root@k8s-master:/usr/local/bin# kubectl status cni
+error: unknown command "status" for "kubectl"
+root@k8s-master:/usr/local/bin# systemctl status cni
+Unit cni.service could not be found.
+root@k8s-master:/usr/local/bin# systemctl status cilium
+Unit cilium.service could not be found.
+root@k8s-master:/usr/local/bin# crictl ps
+CONTAINER           IMAGE                                                              CREATED             STATE               NAME                      ATTEMPT             POD ID              POD
+33c7b2f016a42       ead0a4a53df89fd173874b46093b6e62d8c72967bbf606d672c9e8c9b601a4fc   8 hours ago         Running             coredns                   1                   a6eec8e1bec4e       coredns-5dd5756b68-vz5tr
+7c6ab9b64c67d       d781bfd0e519b886e895b2253f23aaa958fd0fddb2e6013cabbec79ee3cf775d   8 hours ago         Running             cilium-agent              1                   bf06358617105       cilium-crk5z
+82f267273748b       b38a7071cbb74b7dac0cc0d2538c3e57493271b35cd77ff3cc80e301a34ce51a   8 hours ago         Running             cilium-envoy              1                   c0cc0dd801c3c       cilium-envoy-qkq8p
+aafd04d3dfc30       ba6d7f8bc25be40b51dfeb5ddfda697527ba55073620c1c5fa04a5f0ae9e3816   8 hours ago         Running             kube-proxy                1                   f577f20b56a6f       kube-proxy-tb44v
+5ed72913ad384       9dc6939e7c573673801790fcfad6f994282c216e005578f5836b5fafc6685fc2   8 hours ago         Running             kube-apiserver            1                   96b00ca88151a       kube-apiserver-k8s-master
+126101d847024       9d3465f8477c6b383762d90ec387c9d77da8a402a849265805f86feaa57aeeea   8 hours ago         Running             kube-scheduler            1                   be70396c57740       kube-scheduler-k8s-master
+9b3ecdde3c7d2       10541d8af03f40fae257735edd69b6c5dd0084bb9796649409ac7b5660705148   8 hours ago         Running             kube-controller-manager   1                   d70568e330ba5       kube-controller-manager-k8s-master
+dfbabc737b632       2e96e5913fc06e3d26915af3d0f2ca5048cc4b6327e661e80da792cbf8d8d9d4   8 hours ago         Running             etcd                      1                   666fdb32a6d52       etcd-k8s-master
+root@k8s-master:/usr/local/bin#
+root@k8s-master:/usr/local/bin#
+root@k8s-master:/usr/local/bin# kubectl get pod
+NAME    READY   STATUS    RESTARTS   AGE
+mypod   1/1     Running   1          20h
+root@k8s-master:/usr/local/bin#
+root@k8s-master:/usr/local/bin# kubectl get pods
+NAME    READY   STATUS    RESTARTS   AGE
+mypod   1/1     Running   1          20h
+root@k8s-master:/usr/local/bin#
+root@k8s-master:/usr/local/bin# kubectl get po
+NAME    READY   STATUS    RESTARTS   AGE
+mypod   1/1     Running   1          20h
+root@k8s-master:/usr/local/bin#
+root@k8s-master:/usr/local/bin#
+root@k8s-master:/usr/local/bin# kubectl get pod -n kube-system
+NAME                                 READY   STATUS    RESTARTS   AGE
+cilium-7ctt6                         1/1     Running   1          21h
+cilium-7wqpj                         1/1     Running   1          21h
+cilium-crk5z                         1/1     Running   1          21h
+cilium-envoy-lxgqw                   1/1     Running   1          21h
+cilium-envoy-qkq8p                   1/1     Running   1          21h
+cilium-envoy-xzcbd                   1/1     Running   1          21h
+cilium-operator-7b48f9fd58-22vpp     1/1     Running   1          21h
+coredns-5dd5756b68-s2p9d             1/1     Running   0          8h
+coredns-5dd5756b68-vz5tr             1/1     Running   1          21h
+etcd-k8s-master                      1/1     Running   1          21h
+kube-apiserver-k8s-master            1/1     Running   1          21h
+kube-controller-manager-k8s-master   1/1     Running   1          21h
+kube-proxy-bmrtw                     1/1     Running   1          21h
+kube-proxy-c9rkl                     1/1     Running   1          21h
+kube-proxy-tb44v                     1/1     Running   1          21h
+kube-scheduler-k8s-master            1/1     Running   1          21h
+root@k8s-master:/usr/local/bin#
+root@k8s-master:/usr/local/bin# find / -type f -name .bashrc
+/snap/core18/2829/etc/skel/.bashrc
+/snap/core18/2829/root/.bashrc
+/home/ubuntu/.bashrc
+/root/.bashrc
+/var/lib/containers/storage/overlay/e0b761ba6d49da8c59406e1576a5520447d9ee449e286103f6c74d81641ae1dd/merged/root/.bashrc
+/var/lib/containers/storage/overlay/e0b761ba6d49da8c59406e1576a5520447d9ee449e286103f6c74d81641ae1dd/merged/etc/skel/.bashrc
+/var/lib/containers/storage/overlay/ab00d9f3e8251f1de03352b5a81a6bd9f9d923faa5167124c60ad4cb8e3ff909/diff/root/.bashrc
+/var/lib/containers/storage/overlay/ab00d9f3e8251f1de03352b5a81a6bd9f9d923faa5167124c60ad4cb8e3ff909/diff/etc/skel/.bashrc
+/var/lib/containers/storage/overlay/8bd84e135ebf0b48d63ded925a7f15f16bb3e3a60f99435b7e903df378aca0c4/merged/root/.bashrc
+/var/lib/containers/storage/overlay/8bd84e135ebf0b48d63ded925a7f15f16bb3e3a60f99435b7e903df378aca0c4/merged/etc/skel/.bashrc
+/var/lib/containers/storage/overlay/7f623e83855f8e89df94b6042ca9dddf74339a9ebe0f76e1c6513f1a53e16b83/merged/root/.bashrc
+/var/lib/containers/storage/overlay/7f623e83855f8e89df94b6042ca9dddf74339a9ebe0f76e1c6513f1a53e16b83/merged/etc/skel/.bashrc
+/var/lib/containers/storage/overlay/faa7da66e2e266b87fabbaa85fe4e9a6f283c0ad5ed0610964d87b77611fc2c1/merged/root/.bashrc
+/var/lib/containers/storage/overlay/faa7da66e2e266b87fabbaa85fe4e9a6f283c0ad5ed0610964d87b77611fc2c1/merged/etc/skel/.bashrc
+/var/lib/containers/storage/overlay/2573e0d8158209ed54ab25c87bcdcb00bd3d2539246960a3d592a1c599d70465/diff/root/.bashrc
+/var/lib/containers/storage/overlay/2573e0d8158209ed54ab25c87bcdcb00bd3d2539246960a3d592a1c599d70465/diff/etc/skel/.bashrc
+/var/lib/containers/storage/overlay/15d9cd8cbc9e861fe56eac94323937bd7299ba1b968137b0a2ff38c084a3db19/merged/root/.bashrc
+/var/lib/containers/storage/overlay/15d9cd8cbc9e861fe56eac94323937bd7299ba1b968137b0a2ff38c084a3db19/merged/etc/skel/.bashrc
+/var/lib/containers/storage/overlay/60eef729ae27e0edaddbd831205822543465ed54a76d86ec5cf45e1a9ac0178d/merged/root/.bashrc
+/var/lib/containers/storage/overlay/60eef729ae27e0edaddbd831205822543465ed54a76d86ec5cf45e1a9ac0178d/merged/etc/skel/.bashrc
+/var/lib/containers/storage/overlay/f59e8ec2c864abc81cf9bfd50ff3c20304312307ea7ebf4c556f79c800e7f60c/merged/root/.bashrc
+/var/lib/containers/storage/overlay/f59e8ec2c864abc81cf9bfd50ff3c20304312307ea7ebf4c556f79c800e7f60c/merged/etc/skel/.bashrc
+/var/lib/containers/storage/overlay/47c80e165d32b1cd9ccbbb61676130466fba388b0b677973c4d5faef6a5d9518/merged/root/.bashrc
+/var/lib/containers/storage/overlay/47c80e165d32b1cd9ccbbb61676130466fba388b0b677973c4d5faef6a5d9518/merged/etc/skel/.bashrc
+/etc/skel/.bashrc
+root@k8s-master:/usr/local/bin# vi /root/ bashrc
+2 files to edit
+root@k8s-master:/usr/local/bin#
+root@k8s-master:/usr/local/bin# vi /root/ bashrc
+2 files to edit
+root@k8s-master:/usr/local/bin#
+root@k8s-master:/usr/local/bin# vi /home/ubuntu/.bashrc
+root@k8s-master:/usr/local/bin#
+root@k8s-master:/usr/local/bin# cd ^
+-bash: cd: ^: No such file or directory
+root@k8s-master:/usr/local/bin# cd ~
+root@k8s-master:/root# echo "source <(kubectl completion bash)" >> .bashrc
+root@k8s-master:/root# source .bashrc
+root@k8s-master:/root#
+root@k8s-master:/root# kubectl
+annotate       (Update the annotations on a resource)
+api-resources  (Print the supported API resources on the server)
+api-versions   (Print the supported API versions on the server, in the form of "group/version")
+apply          (Apply a configuration to a resource by file name or stdin)
+attach         (Attach to a running container)
+auth           (Inspect authorization)
+autoscale      (Auto-scale a deployment, replica set, stateful set, or replication controller)
+certificate    (Modify certificate resources)
+cluster-info   (Display cluster information)
+completion     (Output shell completion code for the specified shell (bash, zsh, fish, or powershell))
+config         (Modify kubeconfig files)
+cordon         (Mark node as unschedulable)
+cp             (Copy files and directories to and from containers)
+create         (Create a resource from a file or from stdin)
+debug          (Create debugging sessions for troubleshooting workloads and nodes)
+delete         (Delete resources by file names, stdin, resources and names, or by resources and label selector)
+describe       (Show details of a specific resource or group of resources)
+diff           (Diff the live version against a would-be applied version)
+drain          (Drain node in preparation for maintenance)
+edit           (Edit a resource on the server)
+events         (List events)
+exec           (Execute a command in a container)
+explain        (Get documentation for a resource)
+expose         (Take a replication controller, service, deployment or pod and expose it as a new Kubernetes service)
+get            (Display one or many resources)
+help           (Help about any command)
+kustomize      (Build a kustomization target from a directory or URL)
+label          (Update the labels on a resource)
+logs           (Print the logs for a container in a pod)
+options        (Print the list of flags inherited by all commands)
+patch          (Update fields of a resource)
+plugin         (Provides utilities for interacting with plugins)
+port-forward   (Forward one or more local ports to a pod)
+proxy          (Run a proxy to the Kubernetes API server)
+replace        (Replace a resource by file name or stdin)
+rollout        (Manage the rollout of a resource)
+run            (Run a particular image on the cluster)
+scale          (Set a new size for a deployment, replica set, or replication controller)
+set            (Set specific features on objects)
+taint          (Update the taints on one or more nodes)
+top            (Display resource (CPU/memory) usage)
+uncordon       (Mark node as schedulable)
+version        (Print the client and server version information)
+wait           (Experimental: Wait for a specific condition on one or many resources)
+root@k8s-master:/root# kubectl
+annotate       (Update the annotations on a resource)
+api-resources  (Print the supported API resources on the server)
+api-versions   (Print the supported API versions on the server, in the form of "group/version")
+apply          (Apply a configuration to a resource by file name or stdin)
+attach         (Attach to a running container)
+auth           (Inspect authorization)
+autoscale      (Auto-scale a deployment, replica set, stateful set, or replication controller)
+certificate    (Modify certificate resources)
+cluster-info   (Display cluster information)
+completion     (Output shell completion code for the specified shell (bash, zsh, fish, or powershell))
+config         (Modify kubeconfig files)
+cordon         (Mark node as unschedulable)
+cp             (Copy files and directories to and from containers)
+create         (Create a resource from a file or from stdin)
+debug          (Create debugging sessions for troubleshooting workloads and nodes)
+delete         (Delete resources by file names, stdin, resources and names, or by resources and label selector)
+describe       (Show details of a specific resource or group of resources)
+diff           (Diff the live version against a would-be applied version)
+drain          (Drain node in preparation for maintenance)
+edit           (Edit a resource on the server)
+events         (List events)
+exec           (Execute a command in a container)
+explain        (Get documentation for a resource)
+expose         (Take a replication controller, service, deployment or pod and expose it as a new Kubernetes service)
+get            (Display one or many resources)
+help           (Help about any command)
+kustomize      (Build a kustomization target from a directory or URL)
+label          (Update the labels on a resource)
+logs           (Print the logs for a container in a pod)
+options        (Print the list of flags inherited by all commands)
+patch          (Update fields of a resource)
+plugin         (Provides utilities for interacting with plugins)
+port-forward   (Forward one or more local ports to a pod)
+proxy          (Run a proxy to the Kubernetes API server)
+replace        (Replace a resource by file name or stdin)
+rollout        (Manage the rollout of a resource)
+run            (Run a particular image on the cluster)
+scale          (Set a new size for a deployment, replica set, or replication controller)
+set            (Set specific features on objects)
+taint          (Update the taints on one or more nodes)
+top            (Display resource (CPU/memory) usage)
+uncordon       (Mark node as schedulable)
+version        (Print the client and server version information)
+wait           (Experimental: Wait for a specific condition on one or many resources)
+root@k8s-master:/root# kubectl r
+replace  (Replace a resource by file name or stdin)  rollout  (Manage the rollout of a resource)          run      (Run a particular image on the cluster)
+root@k8s-master:/root# kubectl p
+patch         (Update fields of a resource)                      port-forward  (Forward one or more local ports to a pod)
+plugin        (Provides utilities for interacting with plugins)  proxy         (Run a proxy to the Kubernetes API server)
+root@k8s-master:/root#
+root@k8s-master:/root#
+root@k8s-master:/root# kubectl describe pod mypod
+Name:             mypod
+Namespace:        default
+Priority:         0
+Service Account:  default
+Node:             k8s-workernode1/172.31.33.162
+Start Time:       Sat, 09 Nov 2024 14:47:17 +0000
+Labels:           run=mypod
+Annotations:      <none>
+Status:           Running
+IP:               10.0.1.158
+IPs:
+  IP:  10.0.1.158
+Containers:
+  mypod:
+    Container ID:   cri-o://ea619837102752435d2da1980a2eef19b1798ab634ac32e9cb0984cf7d55f630
+    Image:          nginx:latest
+    Image ID:       docker.io/library/nginx@sha256:28402db69fec7c17e179ea87882667f1e054391138f77ffaf0c3eb388efc3ffb
+    Port:           <none>
+    Host Port:      <none>
+    State:          Running
+      Started:      Sun, 10 Nov 2024 03:34:55 +0000
+    Ready:          True
+    Restart Count:  1
+    Environment:    <none>
+    Mounts:
+      /var/run/secrets/kubernetes.io/serviceaccount from kube-api-access-mftbf (ro)
+Conditions:
+  Type              Status
+  Initialized       True
+  Ready             True
+  ContainersReady   True
+  PodScheduled      True
+Volumes:
+  kube-api-access-mftbf:
+    Type:                    Projected (a volume that contains injected data from multiple sources)
+    TokenExpirationSeconds:  3607
+    ConfigMapName:           kube-root-ca.crt
+    ConfigMapOptional:       <nil>
+    DownwardAPI:             true
+QoS Class:                   BestEffort
+Node-Selectors:              <none>
+Tolerations:                 node.kubernetes.io/not-ready:NoExecute op=Exists for 300s
+                             node.kubernetes.io/unreachable:NoExecute op=Exists for 300s
+Events:                      <none>
+root@k8s-master:/root#
+root@k8s-master:/root# cd /var
+root@k8s-master:/var# cd /run/secrets
+-bash: cd: /run/secrets: No such file or directory
+root@k8s-master:/var# ls
+backups  cache  crash  lib  local  lock  log  mail  opt  run  snap  spool  tmp
+root@k8s-master:/var# ls -lart
+total 56
+drwxrwsr-x  2 root staff  4096 Apr 22  2024 local
+drwxr-xr-x  2 root root   4096 Sep 27 08:36 opt
+drwxrwsr-x  2 root mail   4096 Sep 27 08:36 mail
+lrwxrwxrwx  1 root root      4 Sep 27 08:36 run -> /run
+lrwxrwxrwx  1 root root      9 Sep 27 08:36 lock -> /run/lock
+-rw-r--r--  1 root root    208 Sep 27 08:36 .updated
+drwxr-xr-x  4 root root   4096 Sep 27 08:36 spool
+drwxrwsrwt  2 root root   4096 Sep 27 08:38 crash
+drwxr-xr-x  5 root root   4096 Sep 27 08:40 snap
+drwxr-xr-x 13 root root   4096 Nov  9 13:36 .
+drwxr-xr-x 16 root root   4096 Nov  9 14:14 cache
+drwxr-xr-x 51 root root   4096 Nov  9 14:14 lib
+drwxrwxr-x 14 root syslog 4096 Nov 10 03:34 log
+drwxr-xr-x 22 root root   4096 Nov 10 11:59 ..
+drwxr-xr-x  2 root root   4096 Nov 10 12:43 backups
+drwxrwxrwt  8 root root   4096 Nov 10 12:43 tmp
+root@k8s-master:/var# vi run
+root@k8s-master:/var#
+root@k8s-master:/var# vi run
+root@k8s-master:/var#
+root@k8s-master:/var#
+root@k8s-master:/var# kubectl run redis --image=redis
+pod/redis created
+root@k8s-master:/var#
+root@k8s-master:/var# kubectl describe pod redis
+Name:             redis
+Namespace:        default
+Priority:         0
+Service Account:  default
+Node:             k8s-workernode1/172.31.33.162
+Start Time:       Sun, 10 Nov 2024 13:12:09 +0000
+Labels:           run=redis
+Annotations:      <none>
+Status:           Running
+IP:               10.0.1.79
+IPs:
+  IP:  10.0.1.79
+Containers:
+  redis:
+    Container ID:   cri-o://7bebe90ba5ed295363a93fd9d6b6f344918b7c3b582ae96aa3d2af1bfeb09565
+    Image:          redis
+    Image ID:       docker.io/library/redis@sha256:a06cea905344470eb49c972f3d030e22f28f632c1b4f43bbe4a26a4329dd6be5
+    Port:           <none>
+    Host Port:      <none>
+    State:          Running
+      Started:      Sun, 10 Nov 2024 13:12:15 +0000
+    Ready:          True
+    Restart Count:  0
+    Environment:    <none>
+    Mounts:
+      /var/run/secrets/kubernetes.io/serviceaccount from kube-api-access-74fjc (ro)
+Conditions:
+  Type              Status
+  Initialized       True
+  Ready             True
+  ContainersReady   True
+  PodScheduled      True
+Volumes:
+  kube-api-access-74fjc:
+    Type:                    Projected (a volume that contains injected data from multiple sources)
+    TokenExpirationSeconds:  3607
+    ConfigMapName:           kube-root-ca.crt
+    ConfigMapOptional:       <nil>
+    DownwardAPI:             true
+QoS Class:                   BestEffort
+Node-Selectors:              <none>
+Tolerations:                 node.kubernetes.io/not-ready:NoExecute op=Exists for 300s
+                             node.kubernetes.io/unreachable:NoExecute op=Exists for 300s
+Events:
+  Type    Reason     Age   From               Message
+  ----    ------     ----  ----               -------
+  Normal  Scheduled  41s   default-scheduler  Successfully assigned default/redis to k8s-workernode1
+  Normal  Pulling    41s   kubelet            Pulling image "redis"
+  Normal  Pulled     35s   kubelet            Successfully pulled image "redis" in 5.741s (5.741s including waiting)
+  Normal  Created    35s   kubelet            Created container redis
+  Normal  Started    35s   kubelet            Started container redis
+root@k8s-master:/var#
+root@k8s-master:/var# kubectl run --image=nginx
+error: NAME is required for run
+See 'kubectl run -h' for help and examples
+root@k8s-master:/var#
+root@k8s-master:/var#
+root@k8s-master:/var# kubectl run nginx --image=nginx
+pod/nginx created
+root@k8s-master:/var#
+root@k8s-master:/var#
+root@k8s-master:/var# kubectl describe pod nginx
+Name:             nginx
+Namespace:        default
+Priority:         0
+Service Account:  default
+Node:             k8s-workernode2/172.31.37.26
+Start Time:       Sun, 10 Nov 2024 13:15:32 +0000
+Labels:           run=nginx
+Annotations:      <none>
+Status:           Running
+IP:               10.0.2.87
+IPs:
+  IP:  10.0.2.87
+Containers:
+  nginx:
+    Container ID:   cri-o://e128759d9d8631d7a45418b04fc89ffbf1911f5ad2eaec2258f9ece025103974
+    Image:          nginx
+    Image ID:       docker.io/library/nginx@sha256:28402db69fec7c17e179ea87882667f1e054391138f77ffaf0c3eb388efc3ffb
+    Port:           <none>
+    Host Port:      <none>
+    State:          Running
+      Started:      Sun, 10 Nov 2024 13:15:41 +0000
+    Ready:          True
+    Restart Count:  0
+    Environment:    <none>
+    Mounts:
+      /var/run/secrets/kubernetes.io/serviceaccount from kube-api-access-2cwj7 (ro)
+Conditions:
+  Type              Status
+  Initialized       True
+  Ready             True
+  ContainersReady   True
+  PodScheduled      True
+Volumes:
+  kube-api-access-2cwj7:
+    Type:                    Projected (a volume that contains injected data from multiple sources)
+    TokenExpirationSeconds:  3607
+    ConfigMapName:           kube-root-ca.crt
+    ConfigMapOptional:       <nil>
+    DownwardAPI:             true
+QoS Class:                   BestEffort
+Node-Selectors:              <none>
+Tolerations:                 node.kubernetes.io/not-ready:NoExecute op=Exists for 300s
+                             node.kubernetes.io/unreachable:NoExecute op=Exists for 300s
+Events:
+  Type    Reason     Age   From               Message
+  ----    ------     ----  ----               -------
+  Normal  Scheduled  17s   default-scheduler  Successfully assigned default/nginx to k8s-workernode2
+  Normal  Pulling    16s   kubelet            Pulling image "nginx"
+  Normal  Pulled     8s    kubelet            Successfully pulled image "nginx" in 8.192s (8.192s including waiting)
+  Normal  Created    8s    kubelet            Created container nginx
+  Normal  Started    8s    kubelet            Started container nginx
+root@k8s-master:/var#
+root@k8s-master:/var#
+root@k8s-master:/var# kubectl run nginx --image=nginx:latest
+Error from server (AlreadyExists): pods "nginx" already exists
+root@k8s-master:/var#
+root@k8s-master:/var# kubectl run latestnginxversion --image=nginx:latest
+pod/latestnginxversion created
+root@k8s-master:/var#
+root@k8s-master:/var# kubectl describe pod latestnginxversion
+Name:             latestnginxversion
+Namespace:        default
+Priority:         0
+Service Account:  default
+Node:             k8s-workernode1/172.31.33.162
+Start Time:       Sun, 10 Nov 2024 13:21:34 +0000
+Labels:           run=latestnginxversion
+Annotations:      <none>
+Status:           Running
+IP:               10.0.1.103
+IPs:
+  IP:  10.0.1.103
+Containers:
+  latestnginxversion:
+    Container ID:   cri-o://bd3b8da18f25241df5f53266f9ec75a0553057ab6d8f5f47208d308cd9878ba3
+    Image:          nginx:latest
+    Image ID:       docker.io/library/nginx@sha256:28402db69fec7c17e179ea87882667f1e054391138f77ffaf0c3eb388efc3ffb
+    Port:           <none>
+    Host Port:      <none>
+    State:          Running
+      Started:      Sun, 10 Nov 2024 13:21:37 +0000
+    Ready:          True
+    Restart Count:  0
+    Environment:    <none>
+    Mounts:
+      /var/run/secrets/kubernetes.io/serviceaccount from kube-api-access-l56v7 (ro)
+Conditions:
+  Type              Status
+  Initialized       True
+  Ready             True
+  ContainersReady   True
+  PodScheduled      True
+Volumes:
+  kube-api-access-l56v7:
+    Type:                    Projected (a volume that contains injected data from multiple sources)
+    TokenExpirationSeconds:  3607
+    ConfigMapName:           kube-root-ca.crt
+    ConfigMapOptional:       <nil>
+    DownwardAPI:             true
+QoS Class:                   BestEffort
+Node-Selectors:              <none>
+Tolerations:                 node.kubernetes.io/not-ready:NoExecute op=Exists for 300s
+                             node.kubernetes.io/unreachable:NoExecute op=Exists for 300s
+Events:
+  Type    Reason     Age   From               Message
+  ----    ------     ----  ----               -------
+  Normal  Scheduled  19s   default-scheduler  Successfully assigned default/latestnginxversion to k8s-workernode1
+  Normal  Pulling    18s   kubelet            Pulling image "nginx:latest"
+  Normal  Pulled     16s   kubelet            Successfully pulled image "nginx:latest" in 2.006s (2.006s including waiting)
+  Normal  Created    16s   kubelet            Created container latestnginxversion
+  Normal  Started    16s   kubelet            Started container latestnginxversion
+root@k8s-master:/var#
+root@k8s-master:/var# kubectl get pods
+NAME                 READY   STATUS    RESTARTS   AGE
+latestnginxversion   1/1     Running   0          3m13s
+mypod                1/1     Running   1          22h
+nginx                1/1     Running   0          9m15s
+redis                1/1     Running   0          12m
+root@k8s-master:/var#
+root@k8s-master:/var# kubectl run nginx --image=nginx --replicas=3
+error: unknown flag: --replicas
+See 'kubectl run --help' for usage.
+root@k8s-master:/var# kubectl run 3replicasofnginx --image=nginx --replicas=3
+error: unknown flag: --replicas
+See 'kubectl run --help' for usage.
+root@k8s-master:/var#
+root@k8s-master:/var# kubectl logs mypod
+/docker-entrypoint.sh: /docker-entrypoint.d/ is not empty, will attempt to perform configuration
+/docker-entrypoint.sh: Looking for shell scripts in /docker-entrypoint.d/
+/docker-entrypoint.sh: Launching /docker-entrypoint.d/10-listen-on-ipv6-by-default.sh
+10-listen-on-ipv6-by-default.sh: info: Getting the checksum of /etc/nginx/conf.d/default.conf
+10-listen-on-ipv6-by-default.sh: info: Enabled listen on IPv6 in /etc/nginx/conf.d/default.conf
+/docker-entrypoint.sh: Sourcing /docker-entrypoint.d/15-local-resolvers.envsh
+/docker-entrypoint.sh: Launching /docker-entrypoint.d/20-envsubst-on-templates.sh
+/docker-entrypoint.sh: Launching /docker-entrypoint.d/30-tune-worker-processes.sh
+/docker-entrypoint.sh: Configuration complete; ready for start up
+2024/11/10 03:34:56 [notice] 1#1: using the "epoll" event method
+2024/11/10 03:34:56 [notice] 1#1: nginx/1.27.2
+2024/11/10 03:34:56 [notice] 1#1: built by gcc 12.2.0 (Debian 12.2.0-14)
+2024/11/10 03:34:56 [notice] 1#1: OS: Linux 6.8.0-1016-aws
+2024/11/10 03:34:56 [notice] 1#1: getrlimit(RLIMIT_NOFILE): 1048576:1048576
+2024/11/10 03:34:56 [notice] 1#1: start worker processes
+2024/11/10 03:34:56 [notice] 1#1: start worker process 28
+2024/11/10 03:34:56 [notice] 1#1: start worker process 29
+root@k8s-master:/var#
+root@k8s-master:/var#
+root@k8s-master:/var# kubectl logs nginx
+/docker-entrypoint.sh: /docker-entrypoint.d/ is not empty, will attempt to perform configuration
+/docker-entrypoint.sh: Looking for shell scripts in /docker-entrypoint.d/
+/docker-entrypoint.sh: Launching /docker-entrypoint.d/10-listen-on-ipv6-by-default.sh
+10-listen-on-ipv6-by-default.sh: info: Getting the checksum of /etc/nginx/conf.d/default.conf
+10-listen-on-ipv6-by-default.sh: info: Enabled listen on IPv6 in /etc/nginx/conf.d/default.conf
+/docker-entrypoint.sh: Sourcing /docker-entrypoint.d/15-local-resolvers.envsh
+/docker-entrypoint.sh: Launching /docker-entrypoint.d/20-envsubst-on-templates.sh
+/docker-entrypoint.sh: Launching /docker-entrypoint.d/30-tune-worker-processes.sh
+/docker-entrypoint.sh: Configuration complete; ready for start up
+2024/11/10 13:15:41 [notice] 1#1: using the "epoll" event method
+2024/11/10 13:15:41 [notice] 1#1: nginx/1.27.2
+2024/11/10 13:15:41 [notice] 1#1: built by gcc 12.2.0 (Debian 12.2.0-14)
+2024/11/10 13:15:41 [notice] 1#1: OS: Linux 6.8.0-1016-aws
+2024/11/10 13:15:41 [notice] 1#1: getrlimit(RLIMIT_NOFILE): 1048576:1048576
+2024/11/10 13:15:41 [notice] 1#1: start worker processes
+2024/11/10 13:15:41 [notice] 1#1: start worker process 28
+2024/11/10 13:15:41 [notice] 1#1: start worker process 29
+root@k8s-master:/var#
+root@k8s-master:/var#
+root@k8s-master:/var# kubectl logs redis
+1:C 10 Nov 2024 13:12:15.816 # WARNING Your system is configured to use the 'xen' clocksource which might lead to degraded performance. Check the result of the [slow-clocksource] system check: run 'redis-server --check-system' to check if the system's clocksource isn't degrading performance.
+1:C 10 Nov 2024 13:12:15.816 * oO0OoO0OoO0Oo Redis is starting oO0OoO0OoO0Oo
+1:C 10 Nov 2024 13:12:15.816 * Redis version=7.4.1, bits=64, commit=00000000, modified=0, pid=1, just started
+1:C 10 Nov 2024 13:12:15.816 # Warning: no config file specified, using the default config. In order to specify a config file use redis-server /path/to/redis.conf
+1:M 10 Nov 2024 13:12:15.817 * monotonic clock: POSIX clock_gettime
+1:M 10 Nov 2024 13:12:15.818 * Running mode=standalone, port=6379.
+1:M 10 Nov 2024 13:12:15.818 * Server initialized
+1:M 10 Nov 2024 13:12:15.818 * Ready to accept connections tcp
+root@k8s-master:/var#
+root@k8s-master:/var# kubectl exec -it mypod --bash
+error: unknown flag: --bash
+See 'kubectl exec --help' for usage.
+root@k8s-master:/var# kubectl exec -it mypod -- bash
+root@mypod:/#
+root@mypod:/# mkdir anup
+root@mypod:/# cd anup/
+root@mypod:/anup# touch abc.txt
+root@mypod:/anup# ls
+abc.txt
+root@mypod:/anup# exit
+exit
+root@k8s-master:/var#
+root@k8s-master:/var#
+root@k8s-master:/var# kubectl get pods -o wide
+NAME                 READY   STATUS    RESTARTS   AGE   IP           NODE              NOMINATED NODE   READINESS GATES
+latestnginxversion   1/1     Running   0          43m   10.0.1.103   k8s-workernode1   <none>           <none>
+mypod                1/1     Running   1          23h   10.0.1.158   k8s-workernode1   <none>           <none>
+nginx                1/1     Running   0          49m   10.0.2.87    k8s-workernode2   <none>           <none>
+redis                1/1     Running   0          53m   10.0.1.79    k8s-workernode1   <none>           <none>
+root@k8s-master:/var#
+root@k8s-master:/var# crictl status
+No help topic for 'status'
+root@k8s-master:/var#
+root@k8s-master:/var# crictl ps
+CONTAINER           IMAGE                                                              CREATED             STATE               NAME                      ATTEMPT             POD ID              POD
+33c7b2f016a42       ead0a4a53df89fd173874b46093b6e62d8c72967bbf606d672c9e8c9b601a4fc   11 hours ago        Running             coredns                   1                   a6eec8e1bec4e       coredns-5dd5756b68-vz5tr
+7c6ab9b64c67d       d781bfd0e519b886e895b2253f23aaa958fd0fddb2e6013cabbec79ee3cf775d   11 hours ago        Running             cilium-agent              1                   bf06358617105       cilium-crk5z
+82f267273748b       b38a7071cbb74b7dac0cc0d2538c3e57493271b35cd77ff3cc80e301a34ce51a   11 hours ago        Running             cilium-envoy              1                   c0cc0dd801c3c       cilium-envoy-qkq8p
+aafd04d3dfc30       ba6d7f8bc25be40b51dfeb5ddfda697527ba55073620c1c5fa04a5f0ae9e3816   11 hours ago        Running             kube-proxy                1                   f577f20b56a6f       kube-proxy-tb44v
+5ed72913ad384       9dc6939e7c573673801790fcfad6f994282c216e005578f5836b5fafc6685fc2   11 hours ago        Running             kube-apiserver            1                   96b00ca88151a       kube-apiserver-k8s-master
+126101d847024       9d3465f8477c6b383762d90ec387c9d77da8a402a849265805f86feaa57aeeea   11 hours ago        Running             kube-scheduler            1                   be70396c57740       kube-scheduler-k8s-master
+9b3ecdde3c7d2       10541d8af03f40fae257735edd69b6c5dd0084bb9796649409ac7b5660705148   11 hours ago        Running             kube-controller-manager   1                   d70568e330ba5       kube-controller-manager-k8s-master
+dfbabc737b632       2e96e5913fc06e3d26915af3d0f2ca5048cc4b6327e661e80da792cbf8d8d9d4   11 hours ago        Running             etcd                      1                   666fdb32a6d52       etcd-k8s-master
+root@k8s-master:/var# kubectl get pods
+NAME                 READY   STATUS    RESTARTS   AGE
+latestnginxversion   1/1     Running   0          85m
+mypod                1/1     Running   1          23h
+nginx                1/1     Running   0          91m
+redis                1/1     Running   0          94m
+root@k8s-master:/var# kubectl get pods
+NAME                 READY   STATUS    RESTARTS   AGE
+latestnginxversion   1/1     Running   0          87m
+mypod                1/1     Running   1          24h
+nginx                1/1     Running   0          93m
+redis                1/1     Running   0          96m
+root@k8s-master:/var#
+root@k8s-master:/var# kubectl describe
+error: You must specify the type of resource to describe. Use "kubectl api-resources" for a complete list of supported resources.
+root@k8s-master:/var#
+root@k8s-master:/var#
+root@k8s-master:/var# kubectl describe pod mypod
+Name:             mypod
+Namespace:        default
+Priority:         0
+Service Account:  default
+Node:             k8s-workernode1/172.31.33.162
+Start Time:       Sat, 09 Nov 2024 14:47:17 +0000
+Labels:           run=mypod
+Annotations:      <none>
+Status:           Running
+IP:               10.0.1.158
+IPs:
+  IP:  10.0.1.158
+Containers:
+  mypod:
+    Container ID:   cri-o://ea619837102752435d2da1980a2eef19b1798ab634ac32e9cb0984cf7d55f630
+    Image:          nginx:latest
+    Image ID:       docker.io/library/nginx@sha256:28402db69fec7c17e179ea87882667f1e054391138f77ffaf0c3eb388efc3ffb
+    Port:           <none>
+    Host Port:      <none>
+    State:          Running
+      Started:      Sun, 10 Nov 2024 03:34:55 +0000
+    Ready:          True
+    Restart Count:  1
+    Environment:    <none>
+    Mounts:
+      /var/run/secrets/kubernetes.io/serviceaccount from kube-api-access-mftbf (ro)
+Conditions:
+  Type              Status
+  Initialized       True
+  Ready             True
+  ContainersReady   True
+  PodScheduled      True
+Volumes:
+  kube-api-access-mftbf:
+    Type:                    Projected (a volume that contains injected data from multiple sources)
+    TokenExpirationSeconds:  3607
+    ConfigMapName:           kube-root-ca.crt
+    ConfigMapOptional:       <nil>
+    DownwardAPI:             true
+QoS Class:                   BestEffort
+Node-Selectors:              <none>
+Tolerations:                 node.kubernetes.io/not-ready:NoExecute op=Exists for 300s
+                             node.kubernetes.io/unreachable:NoExecute op=Exists for 300s
+Events:                      <none>
+root@k8s-master:/var#
+root@k8s-master:/var# crictl ps
+CONTAINER           IMAGE                                                              CREATED             STATE               NAME                      ATTEMPT             POD ID              POD
+33c7b2f016a42       ead0a4a53df89fd173874b46093b6e62d8c72967bbf606d672c9e8c9b601a4fc   11 hours ago        Running             coredns                   1                   a6eec8e1bec4e       coredns-5dd5756b68-vz5tr
+7c6ab9b64c67d       d781bfd0e519b886e895b2253f23aaa958fd0fddb2e6013cabbec79ee3cf775d   11 hours ago        Running             cilium-agent              1                   bf06358617105       cilium-crk5z
+82f267273748b       b38a7071cbb74b7dac0cc0d2538c3e57493271b35cd77ff3cc80e301a34ce51a   11 hours ago        Running             cilium-envoy              1                   c0cc0dd801c3c       cilium-envoy-qkq8p
+aafd04d3dfc30       ba6d7f8bc25be40b51dfeb5ddfda697527ba55073620c1c5fa04a5f0ae9e3816   11 hours ago        Running             kube-proxy                1                   f577f20b56a6f       kube-proxy-tb44v
+5ed72913ad384       9dc6939e7c573673801790fcfad6f994282c216e005578f5836b5fafc6685fc2   11 hours ago        Running             kube-apiserver            1                   96b00ca88151a       kube-apiserver-k8s-master
+126101d847024       9d3465f8477c6b383762d90ec387c9d77da8a402a849265805f86feaa57aeeea   11 hours ago        Running             kube-scheduler            1                   be70396c57740       kube-scheduler-k8s-master
+9b3ecdde3c7d2       10541d8af03f40fae257735edd69b6c5dd0084bb9796649409ac7b5660705148   11 hours ago        Running             kube-controller-manager   1                   d70568e330ba5       kube-controller-manager-k8s-master
+dfbabc737b632       2e96e5913fc06e3d26915af3d0f2ca5048cc4b6327e661e80da792cbf8d8d9d4   11 hours ago        Running             etcd                      1                   666fdb32a6d52       etcd-k8s-master
+root@k8s-master:/var#
+root@k8s-master:/var#
+root@k8s-master:/var# cd /var/logs
+-bash: cd: /var/logs: No such file or directory
+root@k8s-master:/var# cd /var/log
+root@k8s-master:/var/log# ls
+README            amazon      apt       btmp    cloud-init-output.log  containers  dist-upgrade  dmesg.0     dpkg.log  kern.log   lastlog  private  sysstat              wtmp
+alternatives.log  apport.log  auth.log  chrony  cloud-init.log         crio        dmesg         dmesg.1.gz  journal   landscape  pods     syslog   unattended-upgrades
+root@k8s-master:/var/log#
+root@k8s-master:/var/log# cd pods
+root@k8s-master:/var/log/pods#
+root@k8s-master:/var/log/pods# ls
+kube-system_cilium-crk5z_51b73738-4d8c-495e-9fb5-3f7167209602              kube-system_kube-apiserver-k8s-master_b6606cd092a07ba0dd8fe59aa5e5a8b0
+kube-system_cilium-envoy-qkq8p_cf50090b-6a0b-447a-bd6e-f42d8c033fa1        kube-system_kube-controller-manager-k8s-master_001b1e2d2fe876bd1ba9af8a5fca5831
+kube-system_coredns-5dd5756b68-vz5tr_b2d6fea8-ceb2-4249-88ad-533043346ded  kube-system_kube-proxy-tb44v_66b8246b-e1ab-42da-828d-c183a9c8dc29
+kube-system_etcd-k8s-master_4d510887e95e06f9b189549dbdb4a4de               kube-system_kube-scheduler-k8s-master_85b5d47b95457659d85fcdb027319d73
+root@k8s-master:/var/log/pods#
+root@k8s-master:/var/log/pods# kubectl get pods
+NAME                 READY   STATUS    RESTARTS   AGE
+latestnginxversion   1/1     Running   0          111m
+mypod                1/1     Running   1          24h
+nginx                1/1     Running   0          117m
+redis                1/1     Running   0          121m
+root@k8s-master:/var/log/pods#
+root@k8s-master:/var/log/pods#
+root@k8s-master:/var/log/pods# kubectl run mypod --image nginx:latest --port 80 --dry-run=client
+pod/mypod created (dry run)
+root@k8s-master:/var/log/pods#
+root@k8s-master:/var/log/pods# kubectl get pods
+NAME                 READY   STATUS    RESTARTS   AGE
+latestnginxversion   1/1     Running   0          112m
+mypod                1/1     Running   1          24h
+nginx                1/1     Running   0          118m
+redis                1/1     Running   0          122m
+root@k8s-master:/var/log/pods# kubectl run mypod --image nginx:latest --port 80 --dry-run=client -o yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  creationTimestamp: null
+  labels:
+    run: mypod
+  name: mypod
+spec:
+  containers:
+  - image: nginx:latest
+    name: mypod
+    ports:
+    - containerPort: 80
+    resources: {}
+  dnsPolicy: ClusterFirst
+  restartPolicy: Always
+status: {}
+root@k8s-master:/var/log/pods#
+root@k8s-master:/var/log/pods#
+root@k8s-master:/var/log/pods# kubectl run mypod --image nginx:latest --port 80 --dry-run=client -o yaml > firstpod.yaml
+root@k8s-master:/var/log/pods#
+root@k8s-master:/var/log/pods# ls -lart
+total 40
+drwxr-xr-x  3 root root   4096 Nov  9 14:14 kube-system_etcd-k8s-master_4d510887e95e06f9b189549dbdb4a4de
+drwxr-xr-x  3 root root   4096 Nov  9 14:14 kube-system_kube-apiserver-k8s-master_b6606cd092a07ba0dd8fe59aa5e5a8b0
+drwxr-xr-x  3 root root   4096 Nov  9 14:14 kube-system_kube-scheduler-k8s-master_85b5d47b95457659d85fcdb027319d73
+drwxr-xr-x  3 root root   4096 Nov  9 14:14 kube-system_kube-controller-manager-k8s-master_001b1e2d2fe876bd1ba9af8a5fca5831
+drwxr-xr-x  3 root root   4096 Nov  9 14:14 kube-system_kube-proxy-tb44v_66b8246b-e1ab-42da-828d-c183a9c8dc29
+drwxr-xr-x  9 root root   4096 Nov  9 14:27 kube-system_cilium-crk5z_51b73738-4d8c-495e-9fb5-3f7167209602
+drwxr-xr-x  3 root root   4096 Nov  9 14:28 kube-system_cilium-envoy-qkq8p_cf50090b-6a0b-447a-bd6e-f42d8c033fa1
+drwxr-xr-x  3 root root   4096 Nov  9 14:28 kube-system_coredns-5dd5756b68-vz5tr_b2d6fea8-ceb2-4249-88ad-533043346ded
+drwxrwxr-x 14 root syslog 4096 Nov 10 03:34 ..
+drwxr-xr-x 10 root root   4096 Nov 10 15:27 .
+root@k8s-master:/var/log/pods#
+root@k8s-master:/var/log/pods#
+root@k8s-master:/var/log/pods#
